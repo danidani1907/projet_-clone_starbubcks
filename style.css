@@ -1,4 +1,5 @@
-/* reset das configurações padrão */
+/* reset das configurações */
+
 *{
     margin: 0;
     padding: 0;
@@ -7,14 +8,13 @@
 }
 
 /* padronização de cores */
-html {
-
+html{
     /* variáveis do css */
     --corPrimaria:#017143;
 
-    --corSecundaria: #333;
+    --corSecundaria:#333;
 
-    --corTerciaria: #fff;
+    --corTerciaria:#fff;
 }
 
 /* Container principal */
@@ -31,7 +31,7 @@ main{
 
 /* Header (cabeçalho) */
 header{
-    position:absolute;
+    position: absolute;
     top:0;
     left:0;
     width: 100%;
@@ -45,19 +45,22 @@ header .logo{
     position: relative;
     max-width: 80px;
 }
+
 header .logo:hover{
     filter: invert(0.1);
 }
+
 header ul li{
     list-style: none;
 }
+
 header ul{
     position: relative;
     display: flex;
 }
+
 header ul li a{
-    /* garante que o elemento seja renderizado
-    em linha dentro do bloco */
+    /* garante que o elemento seja renderizado em linha dentro do bloco */
     display: inline-block;
     color: var(--corSecundaria);
     font-size: 20px;
@@ -68,25 +71,27 @@ header ul li a{
 }
 /* hover dos links do cabeçalho */
 header ul li a:hover{
-    background-color: var(--corPrimaria) ;
+    background-color: var(--corPrimaria);
     color: var(--corTerciaria);
     border-radius: 7px;
 }
 
 /* conteúdo principal */
-.conteudo{
+.conteudo {
     position: relative;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .conteudo .textoPrincipal{
     position: relative;
     /* limita o espaço do texto */
     max-width: 600px;
 }
-.conteudo .textoPrincipal h2 {
+
+.conteudo .textoPrincipal h2{
     color: var(--corSecundaria);
     /* 1em = 1vez o tamanho da fonte do elemento */
     /* 16px*2.5= 40px */
@@ -95,17 +100,20 @@ header ul li a:hover{
     line-height: 1.5em;
     font-weight: 500;
 }
-.conteudo .textoPrincipal h2 span {
+
+.conteudo .textoPrincipal h2 span{
     color: var(--corPrimaria);
     font-size: 1.2em;
     font-weight: 900;
 }
+
 .conteudo .textoPrincipal p{
     color: var(--corSecundaria);
 }
+
 .conteudo .textoPrincipal a{
     display: inline-block;
-    margin-top: 20px; 
+    margin-top: 20px;
     padding: 8px 20px;
     background-color: var(--corPrimaria);
     color: var(--corTerciaria);
@@ -114,6 +122,7 @@ header ul li a:hover{
     font-weight: 500;
     letter-spacing: 1px;
 }
+
 .conteudo .textoPrincipal a:hover{
     background-color: var(--corSecundaria);
     color: var(--corTerciaria);
@@ -122,37 +131,40 @@ header ul li a:hover{
     text-decoration: none;
 }
 
-/* imagem do copo grande 🍦 */
+/* imagem do copo grande */
 .conteudo .imgBox{
     width: 600px;
     display: flex;
     justify-content: flex-end;
     padding-right: 50px;
     margin-top: 50px;
-}
+}   
+
 .conteudo .imgBox img{
     max-width: 340px;
 }
 
-/* copos menores 🍦 */
-.sorvetes {
+/* copos menores */
+.sorvete {
     position: absolute;
     left: 50%;
     bottom: 20px;
     transform: translateX(-50%);
-    display: flex;
 }
-.sorvetes li{
+
+.sorvete li{
     list-style: none;
     display: inline-block;
     margin: 0 20px;
     cursor: pointer;
     transition: 0.5s;
 }
-.sorvetes li:hover {
+
+.sorvete li:hover {
     transform: translateY(-15px);
 }
-.sorvetes li img{
+
+.sorvete li img{
     max-width: 60px;
 }
 
@@ -164,34 +176,94 @@ header ul li a:hover{
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
+
 .sociais li{
     list-style: none;
-
 }
+
 #threads{
     height: 40px;
 }
+
 .sociais li a{
     display: inline-block;
     margin: 5px 0;
-    /* alterar escala de tamanho */
+    /* altera a escala do tamanho */
     transform: scale(0.6);
+    /* inverte a cor para branco */
     filter: invert(1);
+}
+
+.sociais li a:hover{
+    color: var(--corSecundaria);
+    filter: invert(0);
+}
+
+.circulo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--corPrimaria);
+
+    clip-path: circle(600px at right 800px);
+}
+
+/* responsividade */
+@media (max-width: 992px){
+    header{
+        padding: 20px;
     }
-    .sociais li a:hover{
-        color: var(--corSecundaria);
-        filter: invert(0);
+    header .logo{
+        max-width: 60px;
     }
-    .circulo{
-        position: absolute;
+    header ul{
+        /* oculta a exibição do cabeçalho */
+        display: none;
+    }
+
+    /* menu hambúrguer */
+    .toggle{
+        position: relative;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        background: url(assets/menu.png);
+        background-size: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: invert(1);
+        z-index:11;
+    }
+
+    .toggle.active{
+        position: fixed;
+        right: 20px;
+        /* preenchido com a imagem de 'fechar' */
+        background: url(assets/close.png);
+        background-size: 25px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* formar lista de menu hambúrguer */
+    header ul.links.active {
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
-        background: var(--corPrimaria);
-
-         clip-path: circle(600px at right 800px);
+        height: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f2f2f2;
+        z-index: 10;
     }
+    header ul li a{
+        font-size: 1.5em;
+        margin: 5px 0;
+    }
+}
